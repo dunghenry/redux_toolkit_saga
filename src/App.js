@@ -1,13 +1,16 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux';
+import {getUsersStart} from './store/slices/userSlice'
+import { createAction } from '@reduxjs/toolkit'
+const getUserStart = createAction('user/getUserStart');
 const App = () => {
   const dispatch = useDispatch();
   const [id, setId] = React.useState(2)
   React.useEffect(() => {
-    dispatch({ type: 'user/getUsersStart' })
+    dispatch(getUsersStart())
   }, [])
   const handleClick = () => {
-    dispatch({ type: 'user/getUserStart', payload: id })
+    dispatch(getUserStart(1))
   }
   return (
     <div>
